@@ -20,8 +20,6 @@ window.onload = () => {
 };
 colorGen();
 
-// Event Listeners
-
 // Remove from list on click
 list.addEventListener("click", e => {
   //Check if x is clicked an remove
