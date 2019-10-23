@@ -97,7 +97,6 @@ function copyColor(e) {
   document.execCommand("copy");
 }
 
-//To Do - Local Storage save list
 
 // Retrieve items from LS
 const getLS = () => {
