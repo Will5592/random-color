@@ -11,9 +11,7 @@ output.addEventListener("click", copyColor);
 list.addEventListener("click", copyColor);
 
 window.onload = () => {
-  console.log(getLS());
   if (getLS() !== null) {
-    console.log("ls exists");
     list.innerHTML = '<ul id="list-inner"></ul>';
     list.querySelector("#list-inner").innerHTML = getLS();
   }
