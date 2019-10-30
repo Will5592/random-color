@@ -3,12 +3,16 @@ const output = document.getElementById("output");
 const generate = document.getElementById("generate");
 const star = document.getElementById("star");
 const list = document.getElementById("list");
+const favBtn = document.getElementById("f-toggle");
 let listUl;
+
+// Event Listeners
 
 generate.addEventListener("click", colorGen);
 star.addEventListener("click", starColor);
 output.addEventListener("click", copyColor);
 list.addEventListener("click", copyColor);
+favBtn.addEventListener("click", menuToggle);
 
 window.onload = () => {
   if (getLS() !== null) {
@@ -46,7 +50,7 @@ async function colorGen() {
   let colorName = data.name.value;
 
   output.parentElement.parentElement.style.background = color;
-  output.innerHTML = `<p id="colName">${colorName}</p><p id="rgb"> ${color}</p>`;
+  output.innerHTML = `<p id="colName" class="color-name">${colorName}</p><p id="rgb"> ${color}</p>`;
 
   document.getElementById("input").value = color;
 }
@@ -58,14 +62,14 @@ function numGen() {
 
 function starColor() {
   if (!list.querySelector("#list-inner")) {
-    list.innerHTML = '<ul id="list-inner"></ul>';
+    list.innerHTML = '<ul id="list-inner" class="no-border"></ul>';
   }
 
   let existing = document.querySelectorAll("#list-inner>li");
   let listUl = document.getElementById("list-inner");
   let curCol = document.getElementById("rgb").textContent;
   let curColName = document.getElementById("colName").textContent;
-  let el = `<li data-color='${curCol}' style='background:${curCol};position: relative;'><span class='remove'>x</span>${curColName}: ${curCol}</li>`;
+  let el = `<li class="fav-color" data-color='${curCol}' style='background:${curCol};position: relative;'><span class='remove'></span>${curColName}: ${curCol}</li>`;
 
   if (
     (existing.length > 0 &&
@@ -80,6 +84,12 @@ function starColor() {
   updateLS();
 }
 
+// Toggle Favourites menu open/close
+function menuToggle() {
+  document.querySelector(".favourites").classList.toggle("open");
+}
+
+// Add color RGB value to clipboard
 function copyColor(e) {
   if (e.target.nodeName === "LI") {
     document.getElementById("input").value = e.target.dataset.color;
@@ -94,7 +104,6 @@ function copyColor(e) {
   document.getElementById("input").select();
   document.execCommand("copy");
 }
-
 
 // Retrieve items from LS
 const getLS = () => {

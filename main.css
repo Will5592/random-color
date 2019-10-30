@@ -5,9 +5,8 @@
   font-family: "Montserrat", sans-serif;
 }
 .container {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
-  padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +18,7 @@
   text-align: center;
 }
 
-#output p:first-of-type {
+.color-name {
   font-size: 3vw;
 }
 
@@ -49,11 +48,57 @@ button:focus {
   outline: none;
 }
 
+/* Favourites menu */
+.favourites {
+  max-width: 90vw;
+  max-height: 700px;
+  position: absolute;
+  right: 0;
+  top: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  bottom: 1rem;
+  transition: all ease-in-out 0.25s;
+  transform: translateX(100%);
+}
+.favourites.open {
+  transform: translateX(0%);
+}
+
+.favourites.open .f-toggle img {
+  transform: rotate(180deg);
+}
+
+.f-toggle {
+  position: absolute;
+  left: -32px;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border-radius: 5px 0 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.f-toggle img {
+  height: 15px;
+  width: 15px;
+  transform: rotate(180deg);
+  transition: transform ease 0.25s;
+}
+
+.favourites.open .f-toggle img {
+  transform: rotate(360deg);
+}
+
+.f-toggle:hover {
+  opacity: 0.85;
+  cursor: pointer;
+}
+
 #list ul {
   margin-top: 2em;
-  border: 4px solid #ffff;
   list-style-type: none;
-  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -76,10 +121,11 @@ li:hover {
 }
 
 .remove {
-  padding: 15px 8px;
+  width: 30px;
+  height: 30px;
   position: absolute;
   left: 20px;
-  background: white;
+  background: url("images/error.svg") no-repeat center;
   line-height: 0;
   border-radius: 25%;
   top: calc(50% - 15px);
@@ -91,6 +137,12 @@ li:hover {
 
 #list-inner.no-border {
   border: none;
+}
+
+@media screen and (max-width: 900px) {
+  .color-name {
+    font-size: 24px;
+  }
 }
 
 @media screen and (max-width: 600px) {

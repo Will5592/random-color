@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Random Color Picker</title>
+    <title>Random Color Generator</title>
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
@@ -14,7 +14,12 @@
         <button id="generate">New Colour</button>
         <button id="star">Add to Favourites</button>
       </div>
-      <div id="list"></div>
+      <div class="favourites">
+        <div id="f-toggle" class="f-toggle">
+          <img src="images/right-arrow.svg" />
+        </div>
+        <div id="list"></div>
+      </div>
     </div>
     <input id="input" readonly type="text" value="" />
     <script src="main.js"></script>
